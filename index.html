@@ -12,52 +12,60 @@
 <body>
     <div class="app-shell">
         <header>
-            <h1>Query Manager</h1>
-            <p>Track your groups, queries, and pending replies in one place.</p>
+            <div class="header-content">
+                <h1>📋 Query Manager</h1>
+                <p>Track your groups, queries, and pending replies in one place.</p>
+            </div>
         </header>
 
         <section class="card form-card">
-            <h2>Add a new query</h2>
+            <div class="card-header">
+                <h2>➕ Add a new query</h2>
+            </div>
             <form id="queryForm">
-                <label>Group / Team
+                <div class="form-group">
+                    <label for="groupInput">Group / Team</label>
                     <input list="groupNames" type="text" id="groupInput" placeholder="Enter group or team name"
                         required />
                     <datalist id="groupNames"></datalist>
-                </label>
-                <div class="group-hint">
+                </div>
 
-                    <div class="group-hint">
-                        <span>Saved groups:</span>
-                        <strong id="savedGroups">No groups yet</strong>
-                    </div>
-                    <label>Query text
-                        <textarea id="queryInput" rows="4" placeholder="Enter query text" required></textarea>
-                    </label>
-                    <label>Status
-                        <select id="statusInput">
-                            <option value="Pending">Pending</option>
-                            <option value="Replied">Replied</option>
-                        </select>
-                    </label>
-                    <button type="submit">Save query</button>
+                <div class="group-hint">
+                    <span>Saved groups:</span>
+                    <strong id="savedGroups">No groups yet</strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="queryInput">Query text</label>
+                    <textarea id="queryInput" rows="4" placeholder="Enter your query here..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="statusInput">Status</label>
+                    <select id="statusInput">
+                        <option value="Pending">⏳ Pending</option>
+                        <option value="Replied">✅ Replied</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Save query</button>
             </form>
         </section>
-
         <section class="card stats-card">
-            <div>
+            <div class="stat">
                 <strong id="totalCount">0</strong>
                 <span>Total queries</span>
             </div>
-            <div>
+            <div class="stat">
                 <strong id="pendingCount">0</strong>
                 <span>Pending replies</span>
             </div>
         </section>
 
-        <!-- Filters removed -->
-
         <section class="card list-card">
-            <h2>Queries</h2>
+            <div class="card-header">
+                <h2>📊 All Queries</h2>
+            </div>
             <div id="queryList"></div>
             <p id="emptyMessage" class="empty-message">No queries yet. Add one above to get started.</p>
         </section>
