@@ -1,3 +1,25 @@
+// Register Service Worker for PWA functionality
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registered:', registration);
+      })
+      .catch(error => {
+        console.log('Service Worker registration failed:', error);
+      });
+  });
+}
+
+// Handle app installation prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // You could show an install button here if desired
+  console.log('Install prompt available');
+});
+
 const queryForm = document.getElementById("queryForm");
 const groupInput = document.getElementById("groupInput");
 const queryInput = document.getElementById("queryInput");

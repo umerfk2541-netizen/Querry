@@ -3,7 +3,15 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="description" content="Track your groups, queries, and pending replies in one place" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Query Manager" />
+    <meta name="apple-mobile-web-app-icons" content="yes" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%233b82f6;stop-opacity:1' /><stop offset='100%' style='stop-color:%238b5cf6;stop-opacity:1' /></linearGradient></defs><rect width='180' height='180' fill='url(%23grad)' rx='40'/><text x='90' y='105' font-size='70' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>Q</text></svg>" />
+    <link rel="manifest" href="manifest.json" />
     <title>Query Manager</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -73,6 +81,20 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="app.js"></script>
+    <script>
+        // Install prompt handling
+        let installPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            installPrompt = e;
+            console.log('PWA install prompt is ready');
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installPrompt = null;
+        });
+    </script>
 </body>
 
 </html>
